@@ -40,7 +40,7 @@ class Welcome extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
-      fadeAnim: new Animated.Value(0),          // 透明度初始值设为0
+      activeIndex: 1,          // 透明度初始值设为0
     };
   }
   _onPressButton(navigate) {
@@ -48,13 +48,17 @@ class Welcome extends Component<{}> {
     // alert("123");
     navigate('Index2')
   }
+  thisScroll(initialPage){
+      this.state.activeIndex=initialPage
+  }
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <ViewPagerAndroid
           style={styles.viewPager}
-          initialPage={0}          
+          initialPage={0}    
+          // onPageScroll= {thisScroll(initialPage)}    
           // scrollEnabled={this.state.scrollEnabled},
           // peekEnabled={false}
           >
@@ -74,14 +78,18 @@ class Welcome extends Component<{}> {
             <ImageBackground style={{height:'100%',width:'100%'}} source={require('../main/assets/welcome/img_game_bg_3.png')} resizeMode='cover'>
               <Text>Second page</Text>
               <Image source={require('../main/assets/welcome/img_game_character_3.png')} />
+              <TouchableHighlight onPress={()=>{this.props.navigation.navigate('Index2') }}         
+                style={{ backgroundColor:'rgba(255, 255, 255, 0.5)', borderRadius:14, justifyContent: 'center', alignItems: 'center', height:30, width:'60%', marginLeft:'20%',}}>
+                <Text  style={{color:'red',}}>开始体验吧!</Text>
+              </TouchableHighlight>
             </ImageBackground>
           </View>
         </ViewPagerAndroid>
         <View style={styles.buttonGroup}>
           <TouchableOpacity  style={styles.buttonGroup2}>
-          <Text style={[styles.button,styles.buttonActive]}>1</Text>
-          <Text style={styles.button}>2</Text>
-          <Text style={styles.button}>3</Text>
+          <Text style={[styles.button, this.state.activeIndex==0?styles.buttonActive:null]}></Text>
+          <Text style={[styles.button, this.state.activeIndex==1?styles.buttonActive:null]}></Text>
+          <Text style={[styles.button, this.state.activeIndex==2?styles.buttonActive:null]}></Text>
           </TouchableOpacity>
           {/* <Button text="1" title="11"  style={styles.button}/>
           <Button text="2" title="22"  style={styles.button}/>
@@ -134,13 +142,16 @@ const styles = StyleSheet.create({
     marginLeft:10,
     marginRight:10,
     // left:10,
-    width:20,
-    height:20,
-    backgroundColor:'white',
-    borderRadius: 10,
+    width:16,
+    height:16,
+    backgroundColor:'#eee',
+    borderRadius: 8,
+    // borderWidth:1,
+    // borderColor:'#eee',
+    // borderStyle:'solid',
   },
   buttonActive:{
-    backgroundColor:'red',
+    backgroundColor:'#333',
   },
 });
 
