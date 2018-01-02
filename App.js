@@ -6,28 +6,26 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  AppState,
-  Platform,
-  StyleSheet,
-  Text,
   View,
-  Image,
-  Button,
-  TouchableHighlight, 
-  Animated,
 } from 'react-native';
-
-import { StackNavigator,DrawerNavigator } from 'react-navigation';
-
+import { DrawerNavigator } from 'react-navigation';
 /**导入一个自己写的js文件*/
-import Welcome from './android/app/src/pages/welcome.js';
+import Index from './android/app/src/pages/index.js';
 
 // export default 
 class App extends Component<{}> {
+  _go(){
+    this.props.navigation.navigate('Index')
+  }
+  componentDidMount(){
+    this._go();
+  }
   render() {
     return (
-      this.props.navigation.navigate('Welcome')
+      // this._go()
+      // this.props.navigation.navigate('Index')
+      <View>
+      </View>
     );
   }
 }
@@ -36,8 +34,7 @@ class App extends Component<{}> {
  
 const SimpleApp =DrawerNavigator({
   Home: { screen: App },
-  Welcome: { screen: Welcome },
-  // Welcome1: { screen: Welcome1 },
+  Index: { screen: Index },
 });
 export default SimpleApp;
 

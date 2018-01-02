@@ -16,9 +16,15 @@ import {
 } from 'react-native';
 
 // import shopCart from './shopCart';
+import FootNav from '../components/footNav.js'
 
 export default class Index2 extends Component<{}> {
-  
+  constructor(props){
+    super(props);
+    this.state={
+        current:'home',
+    }
+}
   gotoShopCart=()=> {
     // const {navigator}=this.props;
     // navigator.push({
@@ -27,6 +33,7 @@ export default class Index2 extends Component<{}> {
     this.props.navigation.goBack()
   }
   render() {
+    const aa="foot";
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -36,6 +43,8 @@ export default class Index2 extends Component<{}> {
           To get started, edit App.js
         </Text>
         <Button onPress={this.gotoShopCart} title="返回上一页"/>
+        <FootNav key={aa}>
+        </FootNav>
       </View>
     );
   }
@@ -67,3 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor:'yellow',
   },
 });
+
+// const Index2App=DrawerNavigator({
+  
+// })

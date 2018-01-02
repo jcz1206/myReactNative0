@@ -24,9 +24,9 @@ import { StackNavigator,DrawerNavigator } from 'react-navigation';
 // import CardStack,{ Card } from 'react-native-card-stack-swiper';
 /**导入一个自己写的js文件*/
 import Index2 from './index2.js';
-import Index from './index.js';
 import FadeInView from './FadeView.js';
 import StackNav from './stackNav.js';
+import ShopCart from './shopCart.js';
 import Swiper from 'react-native-swiper';
 
 // import { createStore } from 'redux';
@@ -34,9 +34,9 @@ import Swiper from 'react-native-swiper';
 
 
 // export default 
-class Welcome extends Component<{}> {
+class Index0 extends Component<{}> {
   static navigationOptions = {
-    title: 'Welcome',    
+    title: 'Index0',    
   };
   constructor(props) {
     super(props);
@@ -94,7 +94,7 @@ class Welcome extends Component<{}> {
         {/* <Image source={{uri: 'android/app/src/main/res/mipmap-hdpi/ic_launcher.png'}} /> */}
         {/* <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}} style={{width:40, height:40}} /> */}
         {/* <Image source={{uri: 'asset:/ic_launcher.png'}} style={{width:40, height:40}} /> */}
-        {/* <Image source={require('./android/app/src/main/assets/ic_launcher.png')} style={{width:40, height:40}} /> */}
+        <Image source={require('../main/assets/ic_launcher.png')} style={{width:40, height:40}} />
         <Text style={styles.welcome}>
           Welcome to React Native81!
         </Text>
@@ -111,9 +111,9 @@ class Welcome extends Component<{}> {
         <TouchableHighlight onPress={()=>{navigate('StackNav') }} style={styles.button2}>
           <Text>体验stackNav</Text>
         </TouchableHighlight>
-        <TouchableHighlight onPress={()=>{this.props.navigation.navigate('Index') }}         
+        <TouchableHighlight onPress={()=>{this.props.navigation.navigate('ShopCart') }}         
         style={{backgroundColor:'green', justifyContent: 'center', alignItems: 'center', height:30, width:'80%',}}>
-          <Text>体验stackNav</Text>
+          <Text>体验ShopCart</Text>
         </TouchableHighlight>
       </View>
     );
@@ -171,11 +171,11 @@ const styles = StyleSheet.create({
 });
 
  
-  const WelcomeApp =DrawerNavigator({
-    Welcome: { screen: Welcome },
+  const Index0App =DrawerNavigator({
+    Index0: { screen: Index0 },
     Index2: { screen: Index2},
     StackNav:{ screen:StackNav },
-    Index:{ screen:Index },
+    ShopCart:{ screen:ShopCart},
   });
-  export default WelcomeApp;
+  export default Index0App;
 

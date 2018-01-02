@@ -26,11 +26,10 @@ import {
 import { StackNavigator,DrawerNavigator } from 'react-navigation';
 // import CardStack,{ Card } from 'react-native-card-stack-swiper';
 /**导入一个自己写的js文件*/
-import Index2 from './index2.js';
-import Index from './index.js';
+// import Index2 from './index2.js';
+import Index0 from './index0.js';
 import FadeInView from './FadeView.js';
 import StackNav from './stackNav.js'; 
-
 
 // export default 
 class Welcome extends Component<{}> {
@@ -40,16 +39,16 @@ class Welcome extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
-      activeIndex: 1,          // 透明度初始值设为0
+      activeIndex: 0,          // 透明度初始值设为0
     };
   }
   _onPressButton(navigate) {
     // console.log("You tapped the button!");
     // alert("123");
-    navigate('Index2')
+    navigate('Index0')
   }
-  thisScroll(initialPage){
-      this.state.activeIndex=initialPage
+  onPageSelected=(e)=>{
+	  this.setState({activeIndex:e.nativeEvent.position});
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -57,10 +56,8 @@ class Welcome extends Component<{}> {
       <View style={styles.container}>
         <ViewPagerAndroid
           style={styles.viewPager}
-          initialPage={0}    
-          // onPageScroll= {thisScroll(initialPage)}    
-          // scrollEnabled={this.state.scrollEnabled},
-          // peekEnabled={false}
+          initialPage={0}     
+          onPageSelected={this.onPageSelected}
           >
           <View style={styles.pageStyle}>
             <ImageBackground style={{height:'100%',width:'100%'}} source={require('../main/assets/welcome/img_game_bg_1.png')} resizeMode='cover'>
@@ -78,7 +75,7 @@ class Welcome extends Component<{}> {
             <ImageBackground style={{height:'100%',width:'100%'}} source={require('../main/assets/welcome/img_game_bg_3.png')} resizeMode='cover'>
               <Text>Second page</Text>
               <Image source={require('../main/assets/welcome/img_game_character_3.png')} />
-              <TouchableHighlight onPress={()=>{this.props.navigation.navigate('Index2') }}         
+              <TouchableHighlight onPress={()=>{ this.props.navigation.navigate('Index2') }}         
                 style={{ backgroundColor:'rgba(255, 255, 255, 0.5)', borderRadius:14, justifyContent: 'center', alignItems: 'center', height:30, width:'60%', marginLeft:'20%',}}>
                 <Text  style={{color:'red',}}>开始体验吧!</Text>
               </TouchableHighlight>
@@ -91,9 +88,6 @@ class Welcome extends Component<{}> {
           <Text style={[styles.button, this.state.activeIndex==1?styles.buttonActive:null]}></Text>
           <Text style={[styles.button, this.state.activeIndex==2?styles.buttonActive:null]}></Text>
           </TouchableOpacity>
-          {/* <Button text="1" title="11"  style={styles.button}/>
-          <Button text="2" title="22"  style={styles.button}/>
-          <Button text="3" title="33"  style={styles.button}/> */}
         </View>
       </View>
     );
@@ -103,10 +97,7 @@ class Welcome extends Component<{}> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',    
+    flex: 2,   
   },
   viewPager: {
     flex: 1,
@@ -115,9 +106,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   pageStyle: {
-    fontSize: 20,
-    textAlign: 'center',
-    backgroundColor: 'yellow',
+    // fontSize: 20,
+    // textAlign: 'center',
+    // backgroundColor: 'yellow',
   },
   buttonGroup:{ 
     position:'absolute',
@@ -142,10 +133,10 @@ const styles = StyleSheet.create({
     marginLeft:10,
     marginRight:10,
     // left:10,
-    width:16,
-    height:16,
+    width:14,
+    height:14,
     backgroundColor:'#eee',
-    borderRadius: 8,
+    borderRadius: 7,
     // borderWidth:1,
     // borderColor:'#eee',
     // borderStyle:'solid',
@@ -158,9 +149,8 @@ const styles = StyleSheet.create({
  
   const WelcomeApp =DrawerNavigator({
     Welcome: { screen: Welcome },
-    Index2: { screen: Index2},
+    Index0: { screen: Index0},
     StackNav:{ screen:StackNav },
-    Index:{ screen:Index },
   });
   export default WelcomeApp;
 

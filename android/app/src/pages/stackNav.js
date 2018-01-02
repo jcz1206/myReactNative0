@@ -36,8 +36,8 @@ class MyHomeScreen extends Component<{}> {
           title="去 下一页"
         />
         <Button 
-        onPress={()=>{this.props.navigation.navigate('Home')}}
-        title="返回欢迎页"
+        onPress={()=>{this.props.navigation.navigate('Index0')}}
+        title="返回首页"
         />
         </View>
       );
@@ -77,7 +77,7 @@ class MyHomeScreen extends Component<{}> {
     }
   });
   
-  const MyApp =StackNavigator({
+  const StackNavApp =StackNavigator({
     First: {
       screen: MyHomeScreen,
     },
@@ -86,4 +86,4 @@ class MyHomeScreen extends Component<{}> {
     },
   });
   
-  export default MyApp;
+  export default StackNavApp;
