@@ -12,7 +12,9 @@ import {
 import { DrawerNavigator } from 'react-navigation';
 
 /**导入一个自己写的js文件*/
-import Index0 from './index0.js';
+// import Index1 from './index1.js';
+import Index2 from './index2.js';
+import Index4 from './index4.js';
 import Welcome from './welcome.js';
 // import Storage from './asyncStorage.js'; 
 import Storage from '../utils/GetSetStorge.js'; 
@@ -32,7 +34,7 @@ class Index extends Component<{}> {
         setTimeout(function(){this.props.navigation.navigate('Welcome') },0);
         
       }else{
-        this.props.navigation.navigate('Index0') 
+        this.props.navigation.navigate('Index4') 
       }
     });
   }
@@ -51,8 +53,9 @@ class Index extends Component<{}> {
  
   const IndexApp =DrawerNavigator({
     Index: { screen: Index },
-    // Index2: { screen: Index2},
-    Index0: { screen: Index0},
+    Index2: { screen: Index2},
+    // Index1: { screen: Index1},
+    Index4: { screen: Index4},
     Welcome:{ screen: Welcome },
   });
   export default IndexApp;

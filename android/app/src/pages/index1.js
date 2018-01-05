@@ -18,6 +18,7 @@ import {
   Button,
   TouchableHighlight, 
   Animated,
+  BackHandler,
 } from 'react-native';
 // import { Navigator } from 'react-native-deprecated-custom-components';
 import { StackNavigator,DrawerNavigator } from 'react-navigation';
@@ -34,15 +35,26 @@ import Swiper from 'react-native-swiper';
 
 
 // export default 
-class Index0 extends Component<{}> {
+class Index1 extends Component<{}> {
   static navigationOptions = {
-    title: 'Index0',    
+    title: 'Index1',    
   };
   constructor(props) {
     super(props);
     this.state = {
       fadeAnim: new Animated.Value(0),          // 透明度初始值设为0
     };
+  }
+  componentWillMount() {
+    if (Platform.OS === 'android') {
+      BackHandler.addEventListener("back", this.onBackClicked);
+    }else {
+
+    }
+  }
+  //返回 ;//return  true 表示返回上一页  false  表示跳出RN
+  onBackClicked = () => { // 默认 表示跳出RN
+    return false;
   }
   _onPressButton(navigate) {
     // console.log("You tapped the button!");
@@ -171,11 +183,11 @@ const styles = StyleSheet.create({
 });
 
  
-  const Index0App =DrawerNavigator({
-    Index0: { screen: Index0 },
+  const Index1App =DrawerNavigator({
+    Index1: { screen: Index1 },
     Index2: { screen: Index2},
     StackNav:{ screen:StackNav },
     ShopCart:{ screen:ShopCart},
   });
-  export default Index0App;
+  export default Index1App;
 

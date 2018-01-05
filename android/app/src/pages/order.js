@@ -6,43 +6,51 @@
 
 import React, { Component } from 'react';
 import {
+  AppState,
   Platform,
   StyleSheet,
   Text,
   View,
+  Button,
   Image,
-  TouchableHighlight,
-  StackNavigator
+  TouchableHighlight
 } from 'react-native';
+import {DrawerNavigator} from 'react-navigation';
+
 import FootNav from '../components/footNav.js'
 
-
-
-export default class shopCart extends Component<{}> {
+export default class Order extends Component<{}> {
   static navigationOptions = {
-    headerTitle: '购物车',
-    tabBarLabel: '购物车',
+    headerTitle: '订单',
+    tabBarLabel: '订单',
     tabBarIcon:({ focused, tintColor }) =>(
-    <Image source={ focused ?require("../main/assets/footer/shoppingCar.png"):require("../main/assets/footer/shoppingCar1.png")} 
+    <Image source={ focused ?require("../main/assets/footer/order.png"):require("../main/assets/footer/order1.png")} 
     style={{width:35, height:40,}}
     />     
     )
   };
+  constructor(props){
+    super(props);
+}
+  gotoShopCart=()=> {
+    // const {navigator}=this.props;
+    // navigator.push({
+    //   component:shopCart,
+    // })
+    this.props.navigation.goBack()
+  }
   render() {
-    // const { navigate } = this.props.navigation;
+    const aa="foot";
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to ShopCart!
+          Welcome to React Native Order!
         </Text>
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
-        
-        <TouchableHighlight onPress={this._onPressButton} style={styles.button}>
-          <Text>Button</Text>
-        </TouchableHighlight>
-        {/* <FootNav name="cart" navigate={this.props.navigation.navigate}>
+        <Button onPress={this.gotoShopCart} title="返回上一页"/>
+        {/* <FootNav name="order" navigate={this.props.navigation.navigate}>
         </FootNav> */}
       </View>
     );

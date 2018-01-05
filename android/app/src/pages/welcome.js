@@ -27,7 +27,7 @@ import { StackNavigator,DrawerNavigator } from 'react-navigation';
 // import CardStack,{ Card } from 'react-native-card-stack-swiper';
 /**导入一个自己写的js文件*/
 // import Index2 from './index2.js';
-import Index0 from './index0.js';
+import Index1 from './index1.js';
 import FadeInView from './FadeView.js';
 import StackNav from './stackNav.js'; 
 
@@ -45,7 +45,7 @@ class Welcome extends Component<{}> {
   _onPressButton(navigate) {
     // console.log("You tapped the button!");
     // alert("123");
-    navigate('Index0')
+    navigate('Index2')
   }
   onPageSelected=(e)=>{
 	  this.setState({activeIndex:e.nativeEvent.position});
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
  
   const WelcomeApp =DrawerNavigator({
     Welcome: { screen: Welcome },
-    Index0: { screen: Index0},
+    Index1: { screen: Index1},
     StackNav:{ screen:StackNav },
   });
   export default WelcomeApp;
