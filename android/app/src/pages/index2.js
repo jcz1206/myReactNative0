@@ -186,19 +186,7 @@ class Index2 extends Component<{}> {
         <Button onPress={this.gotoShopCart} title="返回上一页1"/> */}
         {/* <FootNav name="home" navigate={this.props.navigation.navigate}>
         </FootNav> */}
-          <View style={{ flex:1 ,height:width*.5, width: width, alignItems:'center', backgroundColor:'green'}}>
-           <Swiper autoplay = {true}  showsPagination = {true} dotColor="white"
-                    activeDotColor='yellow' horizontal={true}  style={{ flex:1, height: width*.5, width: width,}}>
-                {
-                    this.state.items.map((item, index) => {
-                        // console.log(item, index) 
-                        //cover: 等比例放大; center:不变; contain:不变; stretch:填充;
-                        return (<ImageBackground style={{height: width*.5, width:width, flex:1,}} key = {index} resizeMode='cover' source={{uri: item}}/>)
-                    })
-                }
-            </Swiper>
-          </View>
-          <View style={{ flex:1 ,height:width*.5, width: width, alignItems:'center', backgroundColor:'green'}}>
+          <View style={{ alignItems:'center', backgroundColor:'green'}}>
            <Swiper autoplay = {true}  showsPagination = {true} dotColor="white"
                     activeDotColor='yellow' horizontal={true}  style={{ flex:1, height: width*.5, width: width,}}>
                 {
