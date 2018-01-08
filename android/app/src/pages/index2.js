@@ -44,7 +44,11 @@ class Index2 extends Component<{}> {
     super(props);
     this.state = {
       activeIndex: 0,          // 透明度初始值设为0
-      items:[],
+      items:[
+        'http://blogdailyherald.com/wp-content/uploads/2013/04/382065_560557460633306_930109857_n.jpg',
+        'http://img0.pclady.com.cn/pclady/pet/choice/cat/1701/6.jpg',
+        'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/3812b31bb051f819dc048662dbb44aed2e73e7f1.jpg'
+      ],
       imgArr:[
         {
           tit:"232",
@@ -117,34 +121,36 @@ class Index2 extends Component<{}> {
     return itemArr;
   }
   componentDidMount() {
-    var item;
-    for (let i = 0; i < 3; i++){
-        switch (i){
-            case 0:{
-                item = 'http://blogdailyherald.com/wp-content/uploads/2013/04/382065_560557460633306_930109857_n.jpg';
+    // var item;
+    // for (let i = 0; i < 3; i++){
+    //     switch (i){
+    //         case 0:{
+    //             item = 'http://blogdailyherald.com/wp-content/uploads/2013/04/382065_560557460633306_930109857_n.jpg';
 
-                break;
-            }
-            case 1:{
-                item = 'http://img0.pclady.com.cn/pclady/pet/choice/cat/1701/6.jpg';
-                break;
-            }
-            default:{
-                item = 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/3812b31bb051f819dc048662dbb44aed2e73e7f1.jpg';
-                break;
-            }
-        }
-        this.state.items.push(item);
-    }
-    console.log(this.state.items + '111');
-    alert(this.state.items + '111');
-    this.setState({
-        isShow: true,
-        items: this.state.items
-    })
+    //             break;
+    //         }
+    //         case 1:{
+    //             item = 'http://img0.pclady.com.cn/pclady/pet/choice/cat/1701/6.jpg';
+    //             break;
+    //         }
+    //         default:{
+    //             item = 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/3812b31bb051f819dc048662dbb44aed2e73e7f1.jpg';
+    //             break;
+    //         }
+    //     }
+    //     this.state.items.push(item);
+    // }
+    // console.log(this.state.items + '111');
+    // alert(this.state.items + '111');
+    // this.setState({
+    //     isShow: true,
+    //     items: this.state.items
+    // })
 }
 
   render() {
+      var Dimensions=require('Dimensions');
+      var {height, width} = Dimensions.get('window');
     return (
       <View style={styles.container}>
         {/* <ScrollView  
@@ -180,168 +186,33 @@ class Index2 extends Component<{}> {
         <Button onPress={this.gotoShopCart} title="返回上一页1"/> */}
         {/* <FootNav name="home" navigate={this.props.navigation.navigate}>
         </FootNav> */}
-          <View style={{ height:200, alignItems:'center', backgroundColor:'blue'}}>
-
-            <Swiper autoplay = {true}  showsPagination = {true} dotColor="white"
-                    activeDotColor='yellow' horizontal={true}>
+          <View style={{ flex:1 ,height:width*.5, width: width, alignItems:'center', backgroundColor:'green'}}>
+           <Swiper autoplay = {true}  showsPagination = {true} dotColor="white"
+                    activeDotColor='yellow' horizontal={true}  style={{ flex:1, height: width*.5, width: width,}}>
                 {
                     this.state.items.map((item, index) => {
-                        console.log(item, index) 
-                        // alert(index);
+                        // console.log(item, index) 
                         //cover: 等比例放大; center:不变; contain:不变; stretch:填充;
-                        return (<Image style={{height: 200, }} key = {index} resizeMode='cover' source={{uri: item}}/>)
+                        return (<ImageBackground style={{height: width*.5, width:width, flex:1,}} key = {index} resizeMode='cover' source={{uri: item}}/>)
                     })
                 }
             </Swiper>
-        <Text style={styles.title}>
-                狗狗的家
-            </Text>
+          </View>
+          <View style={{ flex:1 ,height:width*.5, width: width, alignItems:'center', backgroundColor:'green'}}>
+           <Swiper autoplay = {true}  showsPagination = {true} dotColor="white"
+                    activeDotColor='yellow' horizontal={true}  style={{ flex:1, height: width*.5, width: width,}}>
+                {
+                    this.state.items.map((item, index) => {
+                        // console.log(item, index) 
+                        //cover: 等比例放大; center:不变; contain:不变; stretch:填充;
+                        return (<ImageBackground style={{height: width*.5, width:width, flex:1,}} key = {index} resizeMode='cover' source={{uri: item}}/>)
+                    })
+                }
+            </Swiper>
           </View>
         <View>
-
-        <Text style={styles.title}>
-                狗狗的家
-            </Text>
             <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
+                狗狗的家{width}--{height}
             </Text>
             <Text style={styles.title}>
                 狗狗的家
@@ -376,6 +247,12 @@ class Index2 extends Component<{}> {
 }
 //https://www.jianshu.com/p/ae53fa17dd93
 const styles = StyleSheet.create({
+    backgroundImage:{
+      flex:1,
+    //   width:'100%',
+    //   paddingTop:'80%',
+      height: 320, width: 390,
+    },
   container: {
     flex: 1,
     justifyContent: 'center',
