@@ -20,14 +20,21 @@ import {
   ImageBackground,
   TouchableOpacity,
   ViewPagerAndroid,  
+  TextInput,
 } from 'react-native';
 import {DrawerNavigator} from 'react-navigation';
 import Swiper from 'react-native-swiper';
+
+import MarqueeLabel from 'react-native-lahk-marquee-label';
+// import Marquee  from 'react-native-marquee';
+import {TextInputLayout} from 'rn-textinputlayout';
 
 import FootNav from '../components/footNav.js'
 // import Order from './order'
 // import ShopCart from './shopCart'
 // import My from './my'
+
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default 
 class Index2 extends Component<{}> {
@@ -70,6 +77,13 @@ class Index2 extends Component<{}> {
           img:require('../main/assets/welcome/img_game_character_1.png'),
           bg:require('../main/assets/welcome/img_game_bg_3.png')
         }
+      ],
+      itemsText:[
+          '关于react native 循环动画无法使用InteractionManager的解决办法...',
+          'React Native 项目常用第三方组件汇总 - 简书',
+          'React Native常用第三方组件汇总--史上最全 之一 - 郭东..._博客园',
+          'React Native常用第三方组件汇总--史上最全 之一 - 郭东..._博客园',
+          'speed: number(unit: px/s, px per second), the speed of the marquee. Alternative to duration.'
       ],
     };
   }
@@ -151,21 +165,16 @@ class Index2 extends Component<{}> {
   render() {
       var Dimensions=require('Dimensions');
       var {height, width} = Dimensions.get('window');
+      var txtLen=this.state.itemsText.join(",").length;
+      var speed=txtLen*250;
     return (
       <View style={styles.container}>
-        {/* <ScrollView  
-        horizontal={true}
-        showsHorizontalScrollIndicator={true} 
-        style={styles.hs}
-        >
-          {this.renderItem()}
-       </ScrollView> */}
        <ScrollView  
         horizontal={false}
         showsHorizontalScrollIndicator={false} 
         style={styles.hs}
         >
-        <ViewPagerAndroid
+          <ViewPagerAndroid
            style={styles.viewPager}
            initialPage={0}     
            onPageSelected={this.onPageSelected}
@@ -177,9 +186,7 @@ class Index2 extends Component<{}> {
            {this.renderItem2()}
            </TouchableOpacity>
          </View>
-        {/* <Text style={styles.welcome}>
-          Welcome to React Native81!
-        </Text>
+        {/* 
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
@@ -187,8 +194,33 @@ class Index2 extends Component<{}> {
         {/* <FootNav name="home" navigate={this.props.navigation.navigate}>
         </FootNav> */}
           <View style={{ alignItems:'center', backgroundColor:'green'}}>
-           <Swiper autoplay = {true}  showsPagination = {true} dotColor="white"
-                    activeDotColor='yellow' horizontal={true}  style={{ flex:1, height: width*.5, width: width,}}>
+           <Swiper autoplay = {true}  
+           autoplayTimeout={4}  //每隔4秒切换
+           showsButtons={true}   //为false时不显示控制按钮
+           showsPagination = {true} paginationStyle={{bottom: 10, justifyContent:'flex-end', right:10,}} 
+           dotColor="white" 
+           dot={<View style={{           //未选中的圆点样式
+                backgroundColor: 'rgba(0,0,0,.2)',
+                width: 12,
+                height: 12,
+                borderRadius: 6,
+                marginLeft: 10,
+                marginRight: 9,
+                marginTop: 9,
+                marginBottom: 9,
+            }}/>}
+           activeDotColor='yellow' 
+           activeDot={<View style={{    //选中的圆点样式
+                backgroundColor: '#007aff',
+                width: 12,
+                height: 12,
+                borderRadius: 6,
+                marginLeft: 10,
+                marginRight: 9,
+                marginTop: 9,
+                marginBottom: 9,
+            }}/>}
+           horizontal={true}  style={{ flex:1, height: width*.5, width: width,}}>
                 {
                     this.state.items.map((item, index) => {
                         // console.log(item, index) 
@@ -198,43 +230,102 @@ class Index2 extends Component<{}> {
                 }
             </Swiper>
           </View>
-        <View>
-            <Text style={styles.title}>
-                狗狗的家{width}--{height}
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-            <Text style={styles.title}>
-                狗狗的家
-            </Text>
-        </View>
+          <View>
+            <MarqueeLabel
+              // duration={this.state.itemsText.join(",").length*250} 
+              speed={30}
+              loop={true} 
+              // text={'This is a Marquee Label.'}
+              textStyle={{ fontSize: 13, color: 'blue',paddingLeft:10, paddingTop:0,borderRadius:5,  }} 
+              bgViewStyle={{ backgroundColor:'red', height: 20,  flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            overflow: 'scroll',}} 
+              
+              textContainerStyle={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'flex-start',marginRight:10, paddingLeft:100,
+              }} 
+              // textContainerStyle={{ backgroundColor:'blue',}} 
+            >
+             {
+                this.state.itemsText.map((item, index) => {
+                    return (<Text style={{ backgroundColor:'#b6c3f8', marginRight:10, paddingLeft:10, }} key = {index} ><Text style={{ backgroundColor:'yellow', marginRight:10, paddingLeft:10, }} key = {'a'+index} >{index}</Text>{item}</Text>)
+                })
+              }
+            </MarqueeLabel>
+            <View style={{backgroundColor:'#ccc'}}>
+            <ImageBackground source={{uri:'http://img0.pclady.com.cn/pclady/pet/choice/cat/1701/6.jpg'}} style={{ width:100,height:100,borderRadius:5,flex:1,}} key = 'sk1' resizeMode='contain'/>
+            <Image source={require('../main/assets/welcome/img_game_character_1.png')}  style={{ width:100,height:100,borderRadius:5, backgroundColor:'red',flex:1,}} key = 'sk2' resizeMode='contain' />
+            </View>
+            <Text>{txtLen}==</Text>
+              <Text style={styles.title}>
+                  狗狗的家{width}--{height}
+              </Text>
+              <Text style={styles.title}>
+                  狗狗的家
+              </Text>
+          </View>
+          <View style={styles.container2}>
+              <TextInputLayout
+                  style={styles.inputLayout}
+                  checkValid={t => EMAIL_REGEX.test(t)}
+              >
+                  <TextInput
+                      style={styles.textInput}
+                      placeholder={'Email'}
+                  />
+              </TextInputLayout>
+              <TextInputLayout style={styles.inputLayout}>
+                  <TextInput
+                      style={styles.textInput}
+                      placeholder={'Password'}
+                      secureTextEntry={true}
+                  />
+              </TextInputLayout>
+          </View>
 
         </ScrollView>
       </View>
     );
   }
 }
+
 //https://www.jianshu.com/p/ae53fa17dd93
 const styles = StyleSheet.create({
+  container3: {
+      flex: 1,
+      paddingTop: 100,
+  },
+  label: {
+      color: 'red',
+      fontSize: 18,
+      fontWeight: '800',
+      letterSpacing: 10,
+      fontStyle: 'italic',
+      lineHeight: 50,
+      backgroundColor: 'green',
+      paddingHorizontal: 20,
+      width: 200,
+      left: 100,
+      overflow: 'hidden',
+  },
+  container2: {
+      flex: 1,
+      paddingTop: 0,
+      paddingBottom: 10,
+      backgroundColor:'yellow',
+  },
+  textInput: {
+      fontSize: 12,
+      height: 32,
+  },
+  inputLayout: {
+      marginTop: 10,
+      marginHorizontal: 32,
+      // backgroundColor:'rgb(233,222,200)',
+  },
     backgroundImage:{
       flex:1,
     //   width:'100%',
@@ -271,9 +362,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   pageStyle: {
-    // fontSize: 20,
-    // textAlign: 'center',
-    // backgroundColor: 'yellow',
   },
   buttonGroup:{ 
     // position:'absolute',
@@ -282,31 +370,21 @@ const styles = StyleSheet.create({
     // left:0,
     right:10,
     marginTop:-30,
-    // marginBottom:30,
   },
   buttonGroup2:{ 
     flex: 3,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    // left:0,
-    // right:0,
   },
   button:{  
-    // flex: 3, 
-    // position:'relative',
-    // height:30,
     textAlign:'center',
     marginLeft:10,
     marginRight:10,
-    // left:10,
     width:10,
     height:10,
     backgroundColor:'#eee',
     borderRadius: 5,
-    // borderWidth:1,
-    // borderColor:'#eee',
-    // borderStyle:'solid',
   },
   buttonActive:{
     backgroundColor:'#333',
