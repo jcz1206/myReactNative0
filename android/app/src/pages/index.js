@@ -52,11 +52,39 @@ class Index extends Component<{}> {
 
  
   const IndexApp =DrawerNavigator({
-    Index: { screen: Index },
-    Index2: { screen: Index2},
+    Index: { 
+      screen: Index , 
+      navigationOptions:{
+        drawerLabel:'中转页',
+      },
+    },
+    // Index2: { screen: Index2},
     // Index1: { screen: Index1},
-    Index4: { screen: Index4},
-    Welcome:{ screen: Welcome },
+    Index4: { 
+      screen: Index4, 
+      navigationOptions:{
+        drawerLabel:'首页',
+      },
+    },
+    Welcome:{ 
+      screen: Welcome , 
+      navigationOptions:{
+        drawerLabel:'欢迎页',
+      },
+    },
+  }, {
+    initialRouteName :'Index',
+    drawerWidth: 10, // 展示的宽度
+    drawerPosition: 'left', // 抽屉在左边还是右边
+    contentOptions: {
+      activeTintColor: '#EB3695',  // 选中文字颜色
+      activeBackgroundColor: '#fafafa', // 选中背景颜色
+      inactiveTintColor: 'black',  // 未选中文字颜色
+      inactiveBackgroundColor: '#fff', // 未选中背景颜色
+      style: {  // 样式
+  
+      }
+    },
   });
   export default IndexApp;
 

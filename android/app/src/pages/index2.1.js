@@ -38,18 +38,17 @@ const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"
 
 export default 
 class Index2 extends Component<{}> {
-  // static navigationOptions = {
-  //   headerTitle: '首页',
-  //   tabBarLabel: '首页',
-  //   tabBarIcon:({ focused, tintColor }) =>(
-  //     <Image source={ focused ?require("../main/assets/footer/home.png"):require("../main/assets/footer/home1.png")} 
-  //     style={{width:35, height:40,}}
-  //     />     
-  //   )
-  // };
+  static navigationOptions = {
+    headerTitle: '首页',
+    tabBarLabel: '首页',
+    tabBarIcon:({ focused, tintColor }) =>(
+    <Image source={ focused ?require("../main/assets/footer/home.png"):require("../main/assets/footer/home1.png")} 
+    style={{width:35, height:40,}}
+    />     
+    )
+  };
   constructor(props){
     super(props);
-    // navigation = this.props.navigation; 
     this.state = {
       activeIndex: 0,          // 透明度初始值设为0
       items:[
@@ -103,10 +102,11 @@ class Index2 extends Component<{}> {
     return false;
   }
   gotoShopCart=()=> {
-    // this.gotoShopCart2();
-    // alert(0);
-    this.props.navigation.navigate('ShopCart2')
-    // this.props.navigation.goBack()
+    // const {navigator}=this.props;
+    // navigator.push({
+    //   component:shopCart,
+    // })
+    this.props.navigation.goBack()
   }
   renderItem(){
     var itemArr=[];
@@ -160,7 +160,7 @@ class Index2 extends Component<{}> {
     //     isShow: true,
     //     items: this.state.items
     // })
-  }
+}
 
   render() {
       var Dimensions=require('Dimensions');
@@ -174,6 +174,25 @@ class Index2 extends Component<{}> {
         showsHorizontalScrollIndicator={false} 
         style={styles.hs}
         >
+          {/* <ViewPagerAndroid
+           style={styles.viewPager}
+           initialPage={0}     
+           onPageSelected={this.onPageSelected}
+           >
+          {this.renderItem()}
+         </ViewPagerAndroid>
+         <View style={styles.buttonGroup}>
+           <TouchableOpacity  style={styles.buttonGroup2}>
+           {this.renderItem2()}
+           </TouchableOpacity>
+         </View> */}
+        {/* 
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Button onPress={this.gotoShopCart} title="返回上一页1"/> */}
+        {/* <FootNav name="home" navigate={this.props.navigation.navigate}>
+        </FootNav> */}
         <View style={{flexDirection:'row',flex:3,alignItems:'center', backgroundColor:'red',height:50,}}>
           <Text style={{flex:3,textAlign:'center',color:'#fff',}}>南京站</Text>
           <TextInput style={{flex:7,height:34, fontSize:14, textDecorationLine:'none', borderWidth:0, backgroundColor:'white',paddingLeft:28, paddingTop:0,paddingBottom:0, borderRadius:20,
@@ -254,7 +273,7 @@ class Index2 extends Component<{}> {
                   狗狗的家
               </Text>
           </View>
-          {/* <View style={styles.container2}>
+          <View style={styles.container2}>
               <TextInputLayout
                   style={styles.inputLayout}
                   checkValid={t => EMAIL_REGEX.test(t)}
@@ -271,7 +290,7 @@ class Index2 extends Component<{}> {
                       secureTextEntry={true}
                   />
               </TextInputLayout>
-          </View> */}
+          </View>
 
         </ScrollView>
       </View>
@@ -387,22 +406,8 @@ const styles = StyleSheet.create({
 
 // const Index2App=DrawerNavigator({
 //   Index2:{ screen:Index2 },
-//   // Order:{screen:Order},
+//   Order:{screen:Order},
 //   ShopCart:{screen:ShopCart},
-//   // My:{screen:My},
-// }, {
-//   drawerWidth: 200, // 抽屉宽
-//   drawerPosition: 'left', // 抽屉在左边还是右边
-//   // contentComponent: CustomDrawerContentComponent,  // 自定义抽屉组件
-//   contentOptions: {
-//     initialRouteName: Index2, // 默认页面组件
-//     activeTintColor: 'white',  // 选中文字颜色
-//     activeBackgroundColor: '#ff8500', // 选中背景颜色
-//     inactiveTintColor: '#666',  // 未选中文字颜色
-//     inactiveBackgroundColor: '#fff', // 未选中背景颜色
-//     style: {  // 样式
-
-//     }
-//   }
+//   My:{screen:My},
 // })
 // export default Index2App;

@@ -20,18 +20,18 @@ import {DrawerNavigator} from 'react-navigation';
 import FootNav from '../components/footNav.js'
 
 export default class Order extends Component<{}> {
-  static navigationOptions = {
-    headerTitle: '订单',
-    tabBarLabel: '订单',
-    tabBarIcon:({ focused, tintColor }) =>(
-    <Image source={ focused ?require("../main/assets/footer/order.png"):require("../main/assets/footer/order1.png")} 
-    style={{width:35, height:40,}}
-    />     
-    )
-  };
+  // static navigationOptions = {
+  //   headerTitle: '订单',
+  //   tabBarLabel: '订单',
+  //   tabBarIcon:({ focused, tintColor }) =>(
+  //   <Image source={ focused ?require("../main/assets/footer/order.png"):require("../main/assets/footer/order1.png")} 
+  //   style={{width:35, height:40,}}
+  //   />     
+  //   )
+  // };
   constructor(props){
     super(props);
-}
+  }
   gotoShopCart=()=> {
     // const {navigator}=this.props;
     // navigator.push({

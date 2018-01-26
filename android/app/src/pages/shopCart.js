@@ -14,20 +14,20 @@ import {
   TouchableHighlight,
   StackNavigator
 } from 'react-native';
-import FootNav from '../components/footNav.js'
+// import FootNav from '../components/footNav.js'
 
 
 
 export default class shopCart extends Component<{}> {
-  static navigationOptions = {
-    headerTitle: '购物车',
-    tabBarLabel: '购物车',
-    tabBarIcon:({ focused, tintColor }) =>(
-    <Image source={ focused ?require("../main/assets/footer/shoppingCar.png"):require("../main/assets/footer/shoppingCar1.png")} 
-    style={{width:35, height:40,}}
-    />     
-    )
-  };
+  // static navigationOptions = {
+  //   headerTitle: '购物车',
+  //   tabBarLabel: '购物车',
+  //   tabBarIcon:({ focused, tintColor }) =>(
+  //   <Image source={ focused ?require("../main/assets/footer/shoppingCar.png"):require("../main/assets/footer/shoppingCar1.png")} 
+  //   style={{width:35, height:40,}}
+  //   />     
+  //   )
+  // };
   render() {
     // const { navigate } = this.props.navigation;
     return (

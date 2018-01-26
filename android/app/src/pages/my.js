@@ -20,15 +20,15 @@ import {DrawerNavigator} from 'react-navigation';
 import FootNav from '../components/footNav.js'
 
 export default class My extends Component<{}> {
-  static navigationOptions = {
-    headerTitle: '我的',
-    tabBarLabel: '我的',
-    tabBarIcon:({ focused, tintColor }) =>(
-    <Image source={ focused ?require("../main/assets/footer/my.png"):require("../main/assets/footer/my1.png")} 
-    style={{width:35, height:40,}}
-    />     
-    )
-  };
+  // static navigationOptions = {
+  //   headerTitle: '我的',
+  //   tabBarLabel: '我的',
+  //   tabBarIcon:({ focused, tintColor }) =>(
+  //   <Image source={ focused ?require("../main/assets/footer/my.png"):require("../main/assets/footer/my1.png")} 
+  //   style={{width:35, height:40,}}
+  //   />     
+  //   )
+  // };
   constructor(props){
     super(props);
 }
